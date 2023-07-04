@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccsess.Concrete.EntityFramework
+namespace DataAccess.Concrete.EntityFramework
 {
     //context : Db tabloları ile proje classlarını bağlamak anlamına geliyor
     public class ReCapDbContext:DbContext
