@@ -12,7 +12,7 @@ namespace ConsoleUI
         {
             //CarAddTest();
 
-            GetAllTest();
+            //GetAllTest();
 
             //GetCarsByBrandIdTest();
 
@@ -20,17 +20,62 @@ namespace ConsoleUI
 
             //GetCarDetailsTest();
 
+            //BrandGetAllTest();
+
+            //UserAddTest();
+
+            //CustomerAddTest();
+
+            //RentalManagerAddTest();
+
+
+
+        }
+
+        private static void RentalManagerAddTest()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            var result = rentalManager.Add(new Rental() { Id = 3, CarId = 1, CustomerId = 2, RentDate = DateTime.Now });
+            Console.WriteLine(result.Message);
+        }
+
+        private static void CustomerAddTest()
+        {
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            customerManager.Add(new Customer() { Id = 1, UserId = 1, CompanyName = "Aselsan" });
+            customerManager.Add(new Customer() { Id = 2, UserId = 2, CompanyName = "Roketsan" });
+            customerManager.Add(new Customer() { Id = 3, UserId = 3, CompanyName = "Havelsan" });
+        }
+
+        private static void UserAddTest()
+        {
+            UserManager userManager = new UserManager(new EfUserDal());
+            userManager.Add(new User() { Id = 1, FirstName = "Yusuf", LastName = "Eraslan", Email = "yusuferaslan@hotmail.com", Password = "0123456789+-*/" });
+            userManager.Add(new User() { Id = 2, FirstName = "Fatih", LastName = "Mehmet", Email = "FSM@hotmail.com", Password = "0123456789+-" });
+            userManager.Add(new User() { Id = 3, FirstName = "Kemal", LastName = "Mustafa", Email = "MKA@hotmail.com", Password = "0123456789+" });
+            userManager.Add(new User() { Id = 4, FirstName = "Engin", LastName = "Demiroğ", Email = "engindemirog@hotmail.com", Password = "0123456789" });
+        }
+
+        private static void BrandGetAllTest()
+        {
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
+            var result = brandManager.GetAll();
+            foreach (var brand in result.Data)
+            {
+                Console.WriteLine(brand.Name + brand.Id);
+            }
         }
 
         private static void CarAddTest()
         {
             CarManager carManager = new CarManager(new EfCarDal());
 
-            carManager.Add(new Car() { BrandId = 1, ColorId = 1, Description = "Elektrik", DailyPrice = 100, ModelYear = 2023 });
-            carManager.Add(new Car() { BrandId = 2, ColorId = 2, Description = "Dizel", DailyPrice = 50, ModelYear = 2021 });
-            carManager.Add(new Car() { BrandId = 3, ColorId = 3, Description = "Benzin", DailyPrice = 60, ModelYear = 2022 });
-            carManager.Add(new Car() { BrandId = 1, ColorId = 4, Description = "Hibrit", DailyPrice = 60, ModelYear = 2022 });
-            carManager.Add(new Car() { BrandId = 3, ColorId = 2, Description = "LPG", DailyPrice = 10, ModelYear = 2022 });
+            carManager.Add(new Car() { BrandId = 1, ColorId = 1, Description = "T10x", DailyPrice = 100, ModelYear = 2023 });
+            carManager.Add(new Car() { BrandId = 2, ColorId = 2, Description = "3008", DailyPrice = 50, ModelYear = 2021 });
+            carManager.Add(new Car() { BrandId = 3, ColorId = 3, Description = "Civic", DailyPrice = 60, ModelYear = 2022 });
+            carManager.Add(new Car() { BrandId = 1, ColorId = 4, Description = "T10x 4WD", DailyPrice = 60, ModelYear = 2022 });
+            carManager.Add(new Car() { BrandId = 3, ColorId = 2, Description = "Accord", DailyPrice = 10, ModelYear = 2022 });
+            carManager.Add(new Car() { BrandId = 3, ColorId = 2, Description = "Type R", DailyPrice = 10, ModelYear = 2022 });
         }
 
         private static void GetAllTest()
@@ -77,7 +122,7 @@ namespace ConsoleUI
 
             foreach (var cardetails in result.Data)
             {
-                Console.WriteLine("Yakıt Tipi: {0} Marka: {1} Renk: {2} Fiyat: {3}", cardetails.CarName, cardetails.BrandName, cardetails.ColorName, cardetails.DailyPrice);
+                Console.WriteLine("Marka: {0} Model: {1} Renk: {2} Fiyat: {3}", cardetails.BrandName, cardetails.CarName, cardetails.ColorName, cardetails.DailyPrice);
             }
         }
     }
