@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
+using Core.Entities.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
@@ -50,10 +51,10 @@ namespace ConsoleUI
         private static void UserAddTest()
         {
             UserManager userManager = new UserManager(new EfUserDal());
-            userManager.Add(new User() { Id = 1, FirstName = "Yusuf", LastName = "Eraslan", Email = "yusuferaslan@hotmail.com", Password = "0123456789+-*/" });
-            userManager.Add(new User() { Id = 2, FirstName = "Fatih", LastName = "Mehmet", Email = "FSM@hotmail.com", Password = "0123456789+-" });
-            userManager.Add(new User() { Id = 3, FirstName = "Kemal", LastName = "Mustafa", Email = "MKA@hotmail.com", Password = "0123456789+" });
-            userManager.Add(new User() { Id = 4, FirstName = "Engin", LastName = "Demiroğ", Email = "engindemirog@hotmail.com", Password = "0123456789" });
+            userManager.Add(new User() { Id = 1, FirstName = "Yusuf", LastName = "Eraslan", Email = "yusuferaslan@hotmail.com",  });
+            userManager.Add(new User() { Id = 2, FirstName = "Fatih", LastName = "Mehmet", Email = "FSM@hotmail.com",  });
+            userManager.Add(new User() { Id = 3, FirstName = "Kemal", LastName = "Mustafa", Email = "MKA@hotmail.com",  });
+            userManager.Add(new User() { Id = 4, FirstName = "Engin", LastName = "Demiroğ", Email = "engindemirog@hotmail.com",  });
         }
 
         private static void BrandGetAllTest()

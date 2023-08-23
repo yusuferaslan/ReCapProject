@@ -42,5 +42,16 @@ namespace Business.Constants
 
         public static string RentalNotAdded = "Kiralama Yapılamadı; Arabanın kiralanabilmesi için arabanın teslim edilmesi gerekmektedir (Teslim tarihi girilmelidir).";
         public static string RentalAdded = "Kiralama Yapıldı";
+
+        public static string AuthorizationDenied = "Yetkiniz yok";
+        public static string UserRegistered = "Kullanıcı kayıt edildi";
+        public static string UserNotFound = "Kullanıcı bulunamadı";
+        public static string PasswordError = "Parola hatası";
+        public static string SuccessfulLogin = "Başarılı giriş";
+        public static string UserAlreadyExists = "Kullanıcı zaten mevcut";
+        public static string AccessTokenCreated = "Access token oluşturuldu";
+
+
     }
+
 }
