@@ -1,4 +1,5 @@
 ﻿using Castle.DynamicProxy;
+using Core.Aspects.Autofac.Performance;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +16,11 @@ namespace Core.Utilities.Interceptors
         {
             var classAttributes = type.GetCustomAttributes<MethodInterceptionBaseAttribute>
                 (true).ToList();
-            var methodAttributes = type.GetMethod(method.Name)
+            var methodAttributes = type.GetMethod(method.Name) //Çalıştırılmak istenen metodun üstüne bakıp onun üzerindeki (interceptionları) aspectleri bulup çalıştırıyor.
                 .GetCustomAttributes<MethodInterceptionBaseAttribute>(true);
             classAttributes.AddRange(methodAttributes);
 
+            //classAttributes.Add(new PerformanceAspect(3)); //Buraya yazılırsa bütün metodlar için performanceaspect çalışır.
 
             return classAttributes.OrderBy(x => x.Priority).ToArray();
         }
