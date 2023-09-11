@@ -27,7 +27,7 @@ namespace WebAPI
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
+            builder.Services.AddCors();
 
             // .NetCore IoC container yerine baska bir container kullanacagimiz icin kodlarý kapatiyoruz.
             //builder.Services.AddSingleton<IBrandService, BrandManager>();
@@ -83,9 +83,10 @@ namespace WebAPI
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
+            app.UseStaticFiles();
+            app.UseCors(builder=>builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
             app.UseHttpsRedirection();
-
+           
             app.UseAuthentication();
             app.UseAuthorization();
 

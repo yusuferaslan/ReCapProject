@@ -32,16 +32,16 @@ namespace Business.Concrete
         //[PerformanceAspect(5)] //>> Bu metodun çalışması 5 sn geçerse beni uyar. Sadece bu metodu kontrol eder. Ama AspectInterceptorSelector içine yazılırsa tüm metodları kontrol eder.
         public IResult Add(Car car)
         {
-            if (car.Description.Length > 2 && car.DailyPrice > 0 )
+            if (car.Description.Length > 2 && car.DailyPrice > 0)
             {
-                
+
                 _carDal.Add(car);
                 return new SuccessResult(Messages.CarAdded);
-                
+
             }
             else
             {
-                return new ErrorResult(Messages.CarNotAdded);                    
+                return new ErrorResult(Messages.CarNotAdded);
             }
 
         }
@@ -62,19 +62,19 @@ namespace Business.Concrete
 
         public IDataResult<List<Car>> GetAll()
         {
-            if (DateTime.Now.Hour==00)
+            if (DateTime.Now.Hour == 4)
             {
                 return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
             }
 
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(),Messages.CarsListed);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.CarsListed);
         }
 
         public IDataResult<Car> GetById(int carId)
         {
-            return new SuccessDataResult<Car>(_carDal.Get(c=> c.Id== carId));
+            return new SuccessDataResult<Car>(_carDal.Get(c => c.Id == carId));
         }
-               
+
         public IDataResult<List<Car>> GetCarsByBrandId(int brandId)
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.BrandId == brandId));
@@ -89,5 +89,9 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
         }
 
+        public IDataResult<List<CarDetailDto>> GetCarDetailsId(int carId)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(p => p.Id == carId));
+        }
     }
 }
