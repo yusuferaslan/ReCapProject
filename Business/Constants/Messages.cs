@@ -28,7 +28,7 @@ namespace Business.Constants
         public static string ColorUpdated = "Renk Güncellendi";
         public static string ColorDeleted = "Renk Silindi";
 
-        public static string UserAdded = "Kullanıcı Eklendi";        
+        public static string UserAdded = "Kullanıcı Eklendi";
         public static string UsersListed = "Kullanıcılar Listelendi";
         public static string UserIdListed = "Girilen Kullanıcı Id Listelendi";
         public static string UserUpdated = "Kullanıcı Güncellendi";
@@ -51,7 +51,8 @@ namespace Business.Constants
         public static string UserAlreadyExists = "Kullanıcı zaten mevcut";
         public static string AccessTokenCreated = "Access token oluşturuldu";
 
-
+        public static string PaymentFailed = "Ödeme başarısız oldu";
+        public static string PaymentSuccessful = "Ödeme başarıyla tamamlandı";
     }
 
 }

@@ -42,7 +42,7 @@ namespace Business.Concrete
 
         public IDataResult<Rental> GetById(int rentalId)
         {
-            return new SuccessDataResult<Rental>(_rentalDal.Get(r=> r.Id == rentalId));
+            return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.Id == rentalId));
         }
 
         public IResult Update(Rental rental)
@@ -50,5 +50,16 @@ namespace Business.Concrete
             _rentalDal.Update(rental);
             return new SuccessResult();
         }
+
+        public IDataResult<Rental> CheckRentalCarId(int carId)
+        {
+            var rental = _rentalDal.Get(r => r.CarId == carId && r.ReturnDate == null);
+            if (rental != null)
+            {
+                return new ErrorDataResult<Rental>("Araç müsait değil, kiralanmış durumda");
+            }
+            return new SuccessDataResult<Rental>("Araç müsait, kiralanabilir durumda");
+        }
+
     }
 }
